@@ -1,9 +1,6 @@
 # Online Pharmacy Management System
 A database application software that can be used by a patient (customer) that keep records of all the user and the past transactions of their medicines along with the information of medicines & prescriptions, and many other features.
 
-
-## Architecture and Block Diagram
-
 ### Models
 These are the main tables made:
 - User: redefined inbuilt Django user model to add more functionality (i.e. Personal Details) 
