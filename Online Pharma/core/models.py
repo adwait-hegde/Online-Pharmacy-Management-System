@@ -34,6 +34,7 @@ class Medicine(models.Model):
     side_effects = models.CharField(max_length=100,default='None')
     slug = models.SlugField(default=1,unique=True)
     pharmacy = models.ForeignKey(Pharmacy, on_delete=models.CASCADE,null=True)
+    url = models.URLField(max_length=200, default="https://veganfoodandliving-1321f.kxcdn.com/wp-content/uploads/2019/03/featured.jpg")
 
     def __str__(self):
         return self.name
@@ -51,7 +52,9 @@ class Order(models.Model):
     order_json = models.CharField(max_length=1000,default='')
     ordered = models.BooleanField(default=False)
     ordered_date = models.DateTimeField(auto_now_add=True)
-
+    
+    def __str__(self):
+        return str(self.user) + ' : ' + str(self.order_id)
 
 
 class OrderItem(models.Model):
@@ -59,6 +62,8 @@ class OrderItem(models.Model):
     medicine_id = models.ForeignKey(Medicine, on_delete=models.CASCADE)
     qty = models.IntegerField(default=1)
 
+    def __str__(self):
+        return str(self.order_id) + " - " + str(self.medicine_id)
 
 class User(AbstractUser):
     age = models.CharField(max_length=30, blank=True)
